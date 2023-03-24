@@ -1,5 +1,4 @@
 package java_03;
-import java_03.*;
 
 public class User {
     private String 이름;

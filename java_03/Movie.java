@@ -1,6 +1,5 @@
 package java_03;
 import java.time.LocalDateTime;
-import java_03.*;
 public class Movie {
     private String 이름;
     private LocalDateTime 상영시간;

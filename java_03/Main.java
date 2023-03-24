@@ -1,7 +1,7 @@
 package java_03;
 
 import java.time.LocalDateTime;
-import java_03.*;
+
 public class Main {
     public static void main(String[] args) {
         Movie movie = new Movie();
