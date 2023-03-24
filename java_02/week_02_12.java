@@ -1,3 +1,5 @@
+package java_02;
+
 public class week_02_12 {
     public static void main(String[] args)
     {

@@ -1,3 +1,5 @@
+package java_02;
+
 import java.util.Scanner;
 
 public class 구구단역순출력 {

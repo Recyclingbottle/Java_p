@@ -1,3 +1,4 @@
+package java_02;
 import javax.swing.plaf.synth.SynthEditorPaneUI;
 
 public class week_02_11 {

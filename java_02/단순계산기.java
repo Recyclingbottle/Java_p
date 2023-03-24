@@ -1,3 +1,5 @@
+package java_02;
+
 import java.util.Scanner;
 
 public class 단순계산기 {

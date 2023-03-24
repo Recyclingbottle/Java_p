@@ -1,4 +1,6 @@
-public class weeks_02_01 {
+package java_02;
+
+public class week_02_01 {
     public static void main(String[] args) {
         int a = 1;
         int b = 2;
