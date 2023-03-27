@@ -6,6 +6,15 @@ public class User {
     private Ticket 티켓;
     private int 잔액;
 
+    public User() {
+        this("손님", "010-0000-1111",0);
+    }
+    public User(String 이름, String 전화번호, int 잔액)
+    {
+        this.이름 = "손님";
+        this.잔액 = 0;
+        this.전화번호 = "010-0000-1111";
+    }
     public void 예매(Movie movie, int 예약인원) {
         Ticket ticket = movie.예매(예약인원);
         티켓 = ticket;
