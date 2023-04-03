@@ -16,6 +16,17 @@
 ### Java_03 : 3주차
 - 클래스와 객체
 - 메소드
+
 ### Java_04 : 4주차
 - Static
 - 배열과 열거형
+
+### Java_05 : 5주차
+  - try-catch-finally
+  - throws :: 상위 메서드로 예외 전달
+  - Exception vs RuntimeException
+  - Custom Exception
+  - ArithmeticException
+  - InputMismatchException
+  - ArrayIndexOutOfBoundsException
+  - NumberFormatException
