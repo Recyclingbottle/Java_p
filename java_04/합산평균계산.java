@@ -17,6 +17,6 @@ public class 합산평균계산 {
         }
         System.out.printf("합산결과 : %d\n", sum);
         System.out.printf("평균 : %d\n", sum/5);
-
+        s.close();
     }
 }
