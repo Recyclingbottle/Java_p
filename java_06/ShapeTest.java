@@ -96,23 +96,36 @@ class Box extends Rectangle {
 }
 public class ShapeTest {
     public static void main(String args[]) {
-        Shape s_ojb = new Shape();
-        s_ojb.ShowInfo();
+        Shape s_obj = new Shape();
+        ShowInfo(s_obj);
         
         Circle c_obj2 = new Circle("동전", 5, 3, 4);
-        c_obj2.ShowDetailInfo2D();
+        ShowInfo(c_obj2);
         
         Rectangle r_obj = new Rectangle("타일", 7, 5, 11, 13);
-        r_obj.ShowDetailInfo2D();
+        ShowInfo(r_obj);
 
-        Sphere s_obj = new Sphere("공", 9, 9, 5, 8);
-        s_obj.ShowDetailInfo3D();
+        Sphere s_obj2 = new Sphere("공", 9, 9, 5, 8);
+        ShowInfo(s_obj2);
 
         Box b_obj1 = new Box();
-        b_obj1.ShowDetailInfo3D();
+        ShowInfo(b_obj1);
 
         Box b_obj2 = new Box("책", 1, 3, 7, 7, 13, 11);
-        b_obj2.ShowDetailInfo3D();
+        ShowInfo(b_obj2);
+    }
+    public static void ShowInfo(Shape shape) {
+        if (shape instanceof Rectangle) {
+            ((Rectangle) shape).ShowDetailInfo2D();
+        } else if (shape instanceof Circle) {
+            ((Circle) shape).ShowDetailInfo2D();
+        } else if (shape instanceof Sphere) {
+            ((Sphere) shape).ShowDetailInfo3D();
+        } else if (shape instanceof Box) {
+            ((Box) shape).ShowDetailInfo3D();
+        } else {
+            shape.ShowInfo();
+        }
     }
 }
 
