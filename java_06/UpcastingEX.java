@@ -17,6 +17,7 @@ public class UpcastingEX {
         s_obj = c_obj; // 업캐스팅
         s_obj.x = 10;
         s_obj.y = 15;
+        c_obj.radius =10;
         Circle nc_obj = (Circle)s_obj; // 다운캐스팅
         nc_obj.radius = 7;
     }
