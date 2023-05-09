@@ -1,0 +1,336 @@
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "StudentManager",
+            "request": "launch",
+            "mainClass": "HW.StudentManager",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "HelloJAVA",
+            "request": "launch",
+            "mainClass": "HelloJAVA",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "firstApp",
+            "request": "launch",
+            "mainClass": "firstApp",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "Movie$Main",
+            "request": "launch",
+            "mainClass": "java_02.Movie$Main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_01",
+            "request": "launch",
+            "mainClass": "java_02.week_02_01",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_02",
+            "request": "launch",
+            "mainClass": "java_02.week_02_02",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_03",
+            "request": "launch",
+            "mainClass": "java_02.week_02_03",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_04",
+            "request": "launch",
+            "mainClass": "java_02.week_02_04",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_05",
+            "request": "launch",
+            "mainClass": "java_02.week_02_05",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_06",
+            "request": "launch",
+            "mainClass": "java_02.week_02_06",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_07",
+            "request": "launch",
+            "mainClass": "java_02.week_02_07",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_08",
+            "request": "launch",
+            "mainClass": "java_02.week_02_08",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_09",
+            "request": "launch",
+            "mainClass": "java_02.week_02_09",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_10",
+            "request": "launch",
+            "mainClass": "java_02.week_02_10",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_11",
+            "request": "launch",
+            "mainClass": "java_02.week_02_11",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_02_12",
+            "request": "launch",
+            "mainClass": "java_02.week_02_12",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "구구단역순출력",
+            "request": "launch",
+            "mainClass": "java_02.구구단역순출력",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "단순계산기",
+            "request": "launch",
+            "mainClass": "java_02.단순계산기",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "원",
+            "request": "launch",
+            "mainClass": "java_02.원",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "책",
+            "request": "launch",
+            "mainClass": "java_02.책",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "java_03.Main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "CbR배열",
+            "request": "launch",
+            "mainClass": "java_04.CbR배열",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "rectangleTest",
+            "request": "launch",
+            "mainClass": "java_04.rectangleTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "간단한계산기",
+            "request": "launch",
+            "mainClass": "java_04.간단한계산기",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "구구단테스트",
+            "request": "launch",
+            "mainClass": "java_04.구구단테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "클래스테스트",
+            "request": "launch",
+            "mainClass": "java_04.클래스테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "테스트",
+            "request": "launch",
+            "mainClass": "java_04.테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "합산평균계산",
+            "request": "launch",
+            "mainClass": "java_04.합산평균계산",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "홀짝판정",
+            "request": "launch",
+            "mainClass": "java_04.홀짝판정",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "ArrayException",
+            "request": "launch",
+            "mainClass": "java_05.ArrayException",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "ExceptionExample1",
+            "request": "launch",
+            "mainClass": "java_05.ExceptionExample1",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "InputException",
+            "request": "launch",
+            "mainClass": "java_05.InputException",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "NumException",
+            "request": "launch",
+            "mainClass": "java_05.NumException",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "Main(1)",
+            "request": "launch",
+            "mainClass": "java_05.entity.Main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "java_05.main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "student",
+            "request": "launch",
+            "mainClass": "java_05.student",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "week_m",
+            "request": "launch",
+            "mainClass": "java_05.week_m",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "모양테스트",
+            "request": "launch",
+            "mainClass": "java_05.모양.모양테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "ShapeTest",
+            "request": "launch",
+            "mainClass": "java_06.ShapeTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "자동차테스트",
+            "request": "launch",
+            "mainClass": "java_06.자동차테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "점테스트",
+            "request": "launch",
+            "mainClass": "java_06.점테스트",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "AbstractTest",
+            "request": "launch",
+            "mainClass": "java_07.AbstractTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "TestInterface",
+            "request": "launch",
+            "mainClass": "java_07.TestInterface",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "EqualsEx",
+            "request": "launch",
+            "mainClass": "java_09.EqualsEx",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "IntegerVectorEx",
+            "request": "launch",
+            "mainClass": "java_09.IntegerVectorEx",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "WrapperEx",
+            "request": "launch",
+            "mainClass": "java_09.WrapperEx",
+            "projectName": "Vscode_8e6bb6c5"
+        }
+    ]
+}
