@@ -14,10 +14,10 @@ public class WrapperEx {
         System.out.println(Integer.toString(28)); // 정수 28을 2진수 문자열 변환
         System.out.println(Integer.toBinaryString(28)); // 28을 16진수 문자열 변환
         System.out.println(Integer.bitCount(28)); // 28에 대한 2진수의 1의 개수
-        Integer i = new Integer(28);
-        System.out.println(i.doubleValue()); // 정수를 double 값으로 변환. 28.0
+        //Integer i = new Integer(28);
+        //System.out.println(i.doubleValue()); // 정수를 double 값으로 변환. 28.0
         // Double 사용
-        Double d = new Double(3.14);
+        //Double d = new Double(3.14);
         System.out.println(d.toString()); // Double을 문자열 "3.14"로 변환
         System.out.println(Double.parseDouble("3.14")); // 문자열을 실수 3.14 변환
         // Boolean 사용
@@ -29,7 +29,7 @@ public class WrapperEx {
         Integer ten = 10; // 자동 박싱
         System.out.println(Integer.toString(ten));
         int k = ten; // 자동 언박싱
-        system.out.println(Integer.parseBoolean("false"));
+        //System.out.println(Integer.parseBoolean("false"));
     }
 }
     
