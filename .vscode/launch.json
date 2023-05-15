@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HashMapTermEx",
+            "request": "launch",
+            "mainClass": "java_11.HashMapTermEx",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "ArrayListTest",
+            "request": "launch",
+            "mainClass": "java_11.ArrayListTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
