@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SetJunkOpTest",
+            "request": "launch",
+            "mainClass": "java_11.SetJunkOpTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
             "name": "HashSetTest",
             "request": "launch",
             "mainClass": "java_11.HashSetTest",
