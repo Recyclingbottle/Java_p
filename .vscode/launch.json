@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GenericMethodTest",
+            "request": "launch",
+            "mainClass": "java12.GenericMethodTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "GenericStackTest",
+            "request": "launch",
+            "mainClass": "java12.GenericStackTest",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
             "name": "SimpleFrame3",
             "request": "launch",
             "mainClass": "java_gui.SimpleFrame3",
