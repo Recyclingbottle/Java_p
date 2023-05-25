@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SimpleFrame3",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame3",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "SimpleFrame2",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame2",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "SimpleFrame",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "firstApp",
+            "request": "launch",
+            "mainClass": "firstApp",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
             "name": "CollectionsEx",
             "request": "launch",
             "mainClass": "java_11.CollectionsEx",
