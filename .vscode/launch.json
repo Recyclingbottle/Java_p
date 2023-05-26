@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "NullContainerEx",
+            "request": "launch",
+            "mainClass": "java_gui.NullContainerEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "GridLayoutEx2",
+            "request": "launch",
+            "mainClass": "java_gui.GridLayoutEx2",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "GridLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.GridLayoutEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "BorderLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.BorderLayoutEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "FlowLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.FlowLayoutEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
             "name": "GenericMethodTest",
             "request": "launch",
             "mainClass": "java12.GenericMethodTest",
