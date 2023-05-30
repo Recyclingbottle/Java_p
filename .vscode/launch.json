@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
@@ -17,6 +18,40 @@
             "request": "launch",
             "mainClass": "HW3.main",
             "projectName": "Vscode_8e6bb6c5"
+=======
+            "name": "NullContainerEx",
+            "request": "launch",
+            "mainClass": "java_gui.NullContainerEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "GridLayoutEx2",
+            "request": "launch",
+            "mainClass": "java_gui.GridLayoutEx2",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "GridLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.GridLayoutEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "BorderLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.BorderLayoutEx",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "FlowLayoutEx",
+            "request": "launch",
+            "mainClass": "java_gui.FlowLayoutEx",
+            "projectName": "Java_p_a02cc931"
+>>>>>>> 35ae77eeab5de2ffc41d9a606c7fc9015369f79f
         },
         {
             "type": "java",
@@ -31,6 +66,34 @@
             "request": "launch",
             "mainClass": "java12.GenericStackTest",
             "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "SimpleFrame3",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame3",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "SimpleFrame2",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame2",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "SimpleFrame",
+            "request": "launch",
+            "mainClass": "java_gui.SimpleFrame",
+            "projectName": "Java_p_a02cc931"
+        },
+        {
+            "type": "java",
+            "name": "firstApp",
+            "request": "launch",
+            "mainClass": "firstApp",
+            "projectName": "Java_p_a02cc931"
         },
         {
             "type": "java",
