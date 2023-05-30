@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "HW3.main",
+            "projectName": "Vscode_8e6bb6c5"
+        },
+        {
+            "type": "java",
             "name": "GenericMethodTest",
             "request": "launch",
             "mainClass": "java12.GenericMethodTest",
