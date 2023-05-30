@@ -1,4 +1,4 @@
-package java12;
+package java_12;
 public class GenericMethodTest {
     public static <T> boolean isEqual(T obj1, T obj2) {
         boolean result = obj1.equals(obj2);

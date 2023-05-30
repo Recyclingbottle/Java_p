@@ -98,6 +98,7 @@ abstract class Employee extends Person {
 
 class Manager extends Employee {
     private String phoneNumber;
+    private IdolGroup assignedGroup;
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -108,10 +109,16 @@ class Manager extends Employee {
     }
 
     public void assignGroup(IdolGroup group) {
-        //아직 미완성인 부분 
+        assignedGroup = group;
+        System.out.println("Assigned group: " + group.getGroupName());
     }
 
     public void removeGroup() {
-        //아직 미완성인 부분 
+        if (assignedGroup != null) {
+            System.out.println("Removed group: " + assignedGroup.getGroupName());
+            assignedGroup = null;
+        } else {
+            System.out.println("No group assigned.");
+        }
     }
 }

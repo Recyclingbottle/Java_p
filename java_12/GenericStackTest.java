@@ -1,4 +1,4 @@
-package java12;
+package java_12;
 
 class MyGenericStack<T> {
     private int index;

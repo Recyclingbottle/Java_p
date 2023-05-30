@@ -1,4 +1,4 @@
-package java12;
+package java_12;
 
 public class GenericStackTest2 {
     public static <E> void printArray( E [] inputArray ) {
