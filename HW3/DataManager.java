@@ -59,18 +59,23 @@ public class DataManager {
     }
     private void loadMembers() {
         try (BufferedReader reader = new BufferedReader(new FileReader(MEMBERS_FILE))) {
+            // 첫 번째 줄인 헤더를 무시하기 위해 한 줄을 읽어서 건너뜁니다.
+            reader.readLine();
+            
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(CSV_SEPARATOR);
-                if (values.length >= 4) {
+                if (values.length >= 3) {
                     Member member = new Member();
                     member.setName(values[0]);
                     member.setBirthDate(parseDate(values[1]));
                     member.setContact(values[2]);
-                    String groupName = values[3];
-                    IdolGroup group = getIdolGroup(groupName);
-                    if (group != null) {
-                        group.addMember(member);
+                    if (values.length >= 4) { // 필드가 존재할 경우에만 그룹 처리를 합니다.
+                        String groupName = values[3];
+                        IdolGroup group = getIdolGroup(groupName);
+                        if (group != null) {
+                            group.addMember(member);
+                        }
                     }
                     members.add(member);
                 }
@@ -83,6 +88,9 @@ public class DataManager {
 
     private void loadSchedules() {
         try (BufferedReader reader = new BufferedReader(new FileReader(SCHEDULES_FILE))) {
+            // 첫 번째 줄을 건너뜁니다.
+            reader.readLine();
+            
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(CSV_SEPARATOR);
@@ -98,9 +106,13 @@ public class DataManager {
             e.printStackTrace();
         }
     }
+    
 
     private void loadDepartments() {
         try (BufferedReader reader = new BufferedReader(new FileReader(DEPARTMENTS_FILE))) {
+            // 첫 번째 줄을 건너뜁니다.
+            reader.readLine();
+            
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(CSV_SEPARATOR);
@@ -115,9 +127,13 @@ public class DataManager {
             e.printStackTrace();
         }
     }
+    
 
     private void loadCompanies() {
         try (BufferedReader reader = new BufferedReader(new FileReader(COMPANIES_FILE))) {
+            // 첫 번째 줄을 건너뜁니다.
+            reader.readLine();
+            
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(CSV_SEPARATOR);
@@ -131,7 +147,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     private void loadAlbums() {
         try (BufferedReader reader = new BufferedReader(new FileReader(ALBUMS_FILE))) {
             String line;
@@ -442,5 +458,24 @@ public class DataManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+     public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
     }
 }

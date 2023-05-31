@@ -1,33 +1,37 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 
 public class Main {
     private DataManager dataManager;
     private DefaultListModel<IdolGroup> idolGroupListModel;
+    private DefaultListModel<Album> albumListModel;
+    private DefaultListModel<Company> companyListModel;
+    private DefaultListModel<Department> departmentListModel;
+    private DefaultListModel<Member> memberListModel;
+    private DefaultListModel<Schedule> scheduleListModel;
     private JList<IdolGroup> idolGroupList;
-    private JFrame detailFrame;
-    private JLabel groupNameLabel;
-    private JLabel debutDateLabel;
-    private JLabel agencyLabel;
+    private JList<Album> albumList;
+    private JList<Company> companyList;
+    private JList<Department> departmentList;
+    private JList<Member> memberList;
+    private JList<Schedule> scheduleList;
 
     public static void main(String[] args) {
         Main main = new Main();
@@ -39,62 +43,180 @@ public class Main {
         dataManager = new DataManager();
 
         // JFrame 및 JPanel 생성
-        JFrame frame = new JFrame("아이돌 그룹 관리");
-        JPanel panel = new JPanel(new GridBagLayout());
+        JFrame frame = new JFrame("데이터 관리");
+        JPanel panel = new JPanel();
 
+        // 아이돌 그룹 목록
+        JLabel idolGroupLabel = new JLabel("아이돌 그룹 관리");
+        idolGroupListModel = new DefaultListModel<>();
+        idolGroupList = new JList<>(idolGroupListModel);
+        idolGroupList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane idolGroupScrollPane = new JScrollPane(idolGroupList);
+        idolGroupScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 앨범 목록
+        JLabel albumLabel = new JLabel("앨범 관리");
+        albumListModel = new DefaultListModel<>();
+        albumList = new JList<>(albumListModel);
+        albumList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane albumScrollPane = new JScrollPane(albumList);
+        albumScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 회사 목록
+        JLabel companyLabel = new JLabel("회사 관리");
+        companyListModel = new DefaultListModel<>();
+        companyList = new JList<>(companyListModel);
+        companyList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane companyScrollPane = new JScrollPane(companyList);
+        companyScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 부서 목록
+        JLabel departmentLabel = new JLabel("부서 관리");
+        departmentListModel = new DefaultListModel<>();
+        departmentList = new JList<>(departmentListModel);
+        departmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane departmentScrollPane = new JScrollPane(departmentList);
+        departmentScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 멤버 목록
+        JLabel memberLabel = new JLabel("멤버 관리");
+        memberListModel = new DefaultListModel<>();
+        memberList = new JList<>(memberListModel);
+        memberList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane memberScrollPane = new JScrollPane(memberList);
+        memberScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 스케줄 목록
+        JLabel scheduleLabel = new JLabel("스케줄 관리");
+        scheduleListModel = new DefaultListModel<>();
+        scheduleList = new JList<>(scheduleListModel);
+        scheduleList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleList);
+        scheduleScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // 아이돌 그룹 관리 버튼
+        JButton idolGroupButton = new JButton("아이돌 그룹 관리");
+        idolGroupButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showIdolGroupManagement();
+            }
+        });
+
+        // 앨범 관리 버튼
+        JButton albumButton = new JButton("앨범 관리");
+        albumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showAlbumManagement();
+            }
+        });
+
+        // 회사 관리 버튼
+        JButton companyButton = new JButton("회사 관리");
+        companyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showCompanyManagement();
+            }
+        });
+
+        // 부서 관리 버튼
+        JButton departmentButton = new JButton("부서 관리");
+        departmentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showDepartmentManagement();
+            }
+        });
+
+        // 멤버 관리 버튼
+        JButton memberButton = new JButton("멤버 관리");
+        memberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMemberManagement();
+            }
+        });
+
+        // 스케줄 관리 버튼
+        JButton scheduleButton = new JButton("스케줄 관리");
+        scheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showScheduleManagement();
+            }
+        });
+
+        panel.add(idolGroupButton);
+        panel.add(albumButton);
+        panel.add(companyButton);
+        panel.add(departmentButton);
+        panel.add(memberButton);
+        panel.add(scheduleButton);
+
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+
+    // 아이돌 그룹 관리 창 보여주는 메서드
+    private void showIdolGroupManagement() {
+        JFrame frame = new JFrame("아이돌 그룹 관리");
+        JPanel panel = new JPanel();
+    
         // DefaultListModel와 JList 생성
         idolGroupListModel = new DefaultListModel<>();
         idolGroupList = new JList<>(idolGroupListModel);
         idolGroupList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane scrollPane = new JScrollPane(idolGroupList);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+    
         // JButton 생성
         JButton addIdolGroupButton = new JButton("아이돌 그룹 추가");
         JButton removeIdolGroupButton = new JButton("아이돌 그룹 삭제");
         JButton updateIdolGroupButton = new JButton("아이돌 그룹 수정");
-
+    
         // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1.0;
-        constraints.weighty = 1.0;
-        constraints.gridwidth = 3;
-        constraints.gridheight = 1;
-        panel.add(scrollPane, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        panel.add(addIdolGroupButton, constraints);
-
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        panel.add(removeIdolGroupButton, constraints);
-
-        constraints.gridx = 2;
-        constraints.gridy = 1;
-        panel.add(updateIdolGroupButton, constraints);
-
+        panel.add(addIdolGroupButton);
+        panel.add(removeIdolGroupButton);
+        panel.add(updateIdolGroupButton);
+        panel.add(scrollPane);
+    
         // 아이돌 그룹 목록 초기화
         refreshIdolGroupList();
-
+    
+        idolGroupList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedIndex = idolGroupList.getSelectedIndex();
+                    if (selectedIndex != -1) {
+                        IdolGroup selectedGroup = idolGroupListModel.get(selectedIndex);
+                        showIdolGroupDetails(selectedGroup);
+                    }
+                }
+            }
+        });
+    
         addIdolGroupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // 아이돌 그룹 추가 로직 구현
                 String groupName = JOptionPane.showInputDialog(frame, "추가할 아이돌 그룹의 이름을 입력하세요:");
                 if (groupName != null && !groupName.isEmpty()) {
                     String debutDateString = JOptionPane.showInputDialog(frame, "데뷔일자를 입력하세요 (yyyy-MM-dd):");
                     String agency = JOptionPane.showInputDialog(frame, "소속사를 입력하세요:");
-
+    
                     if (debutDateString != null && !debutDateString.isEmpty() && agency != null && !agency.isEmpty()) {
                         try {
                             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                             Date debutDate = dateFormat.parse(debutDateString);
-
+    
                             IdolGroup group = new IdolGroup(groupName, debutDate, agency);
                             dataManager.addIdolGroup(group);
                             refreshIdolGroupList();
@@ -105,7 +227,7 @@ public class Main {
                 }
             }
         });
-
+    
         removeIdolGroupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,11 +237,10 @@ public class Main {
                     IdolGroup selectedGroup = idolGroupListModel.get(selectedIndex);
                     dataManager.removeIdolGroup(selectedGroup.getGroupName());
                     refreshIdolGroupList();
-                    clearDetailedInformation();
                 }
             }
         });
-
+    
         updateIdolGroupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,21 +253,105 @@ public class Main {
                         selectedGroup.setGroupName(groupName);
                         dataManager.updateIdolGroup(selectedGroup);
                         refreshIdolGroupList();
-                        clearDetailedInformation();
+                    }
+                }
+            }
+        });
+    
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+    
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+    
+    private void showIdolGroupDetails(IdolGroup group) {
+        StringBuilder details = new StringBuilder();
+        details.append("그룹 이름: ").append(group.getGroupName()).append("\n");
+        details.append("데뷔 날짜: ").append(group.getDebutDate()).append("\n");
+        details.append("소속사: ").append(group.getAgency()).append("\n");
+    
+        JOptionPane.showMessageDialog(null, details.toString(), "아이돌 그룹 상세 정보", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // 앨범 관리 창 보여주는 메서드
+    private void showAlbumManagement() {
+        JFrame frame = new JFrame("앨범 관리");
+        JPanel panel = new JPanel();
+
+        // DefaultListModel와 JList 생성
+        albumListModel = new DefaultListModel<>();
+        albumList = new JList<>(albumListModel);
+        albumList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(albumList);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // JButton 생성
+        JButton addAlbumButton = new JButton("앨범 추가");
+        JButton removeAlbumButton = new JButton("앨범 삭제");
+        JButton updateAlbumButton = new JButton("앨범 수정");
+
+        // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
+        panel.add(addAlbumButton);
+        panel.add(removeAlbumButton);
+        panel.add(updateAlbumButton);
+        panel.add(scrollPane);
+
+        // 앨범 목록 초기화
+        refreshAlbumList();
+
+        addAlbumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 앨범 추가 로직 구현
+                String albumName = JOptionPane.showInputDialog(frame, "추가할 앨범의 이름을 입력하세요:");
+                if (albumName != null && !albumName.isEmpty()) {
+                    String releaseDateString = JOptionPane.showInputDialog(frame, "발매일을 입력하세요 (yyyy-MM-dd):");
+                    String groupName = JOptionPane.showInputDialog(frame, "소속된 아이돌 그룹의 이름을 입력하세요:");
+
+                    if (releaseDateString != null && !releaseDateString.isEmpty() && groupName != null && !groupName.isEmpty()) {
+                        try {
+                            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            Date releaseDate = dateFormat.parse(releaseDateString);
+
+                            Album album = new Album();
+                            dataManager.addAlbum(album);
+                            refreshAlbumList();
+                        } catch (ParseException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             }
         });
 
-        // ListSelectionListener 추가
-        idolGroupList.addListSelectionListener(new ListSelectionListener() {
+        removeAlbumButton.addActionListener(new ActionListener() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    int selectedIndex = idolGroupList.getSelectedIndex();
-                    if (selectedIndex != -1) {
-                        IdolGroup selectedGroup = idolGroupListModel.get(selectedIndex);
-                        showDetailedInformation(selectedGroup);
+            public void actionPerformed(ActionEvent e) {
+                // 앨범 삭제 로직 구현
+                int selectedIndex = albumList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Album selectedAlbum = albumListModel.get(selectedIndex);
+                    dataManager.removeAlbum(selectedAlbum.getTitle());
+                    refreshAlbumList();
+                }
+            }
+        });
+
+        updateAlbumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 앨범 수정 로직 구현
+                int selectedIndex = albumList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Album selectedAlbum = albumListModel.get(selectedIndex);
+                    String albumName = JOptionPane.showInputDialog(frame, "수정할 앨범의 이름을 입력하세요:");
+                    if (albumName != null && !albumName.isEmpty()) {
+                        selectedAlbum.setTitle(albumName);
+                        dataManager.updateAlbum(selectedAlbum);
+                        refreshAlbumList();
                     }
                 }
             }
@@ -156,79 +361,390 @@ public class Main {
         frame.add(panel);
 
         // JFrame 설정
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(400, 300);
         frame.setVisible(true);
     }
 
-    // 아이돌 그룹 목록을 갱신하는 메서드
+    // 회사 관리 창 보여주는 메서드
+    private void showCompanyManagement() {
+        JFrame frame = new JFrame("회사 관리");
+        JPanel panel = new JPanel();
+
+        // DefaultListModel와 JList 생성
+        companyListModel = new DefaultListModel<>();
+        companyList = new JList<>(companyListModel);
+        companyList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(companyList);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // JButton 생성
+        JButton addCompanyButton = new JButton("회사 추가");
+        JButton removeCompanyButton = new JButton("회사 삭제");
+        JButton updateCompanyButton = new JButton("회사 수정");
+
+        // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
+        panel.add(addCompanyButton);
+        panel.add(removeCompanyButton);
+        panel.add(updateCompanyButton);
+        panel.add(scrollPane);
+
+        // 회사 목록 초기화
+        refreshCompanyList();
+
+        addCompanyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 회사 추가 로직 구현
+                String companyName = JOptionPane.showInputDialog(frame, "추가할 회사의 이름을 입력하세요:");
+                if (companyName != null && !companyName.isEmpty()) {
+                    Company company = new Company();
+                    dataManager.addCompany(company);
+                    refreshCompanyList();
+                }
+            }
+        });
+
+        removeCompanyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 회사 삭제 로직 구현
+                int selectedIndex = companyList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Company selectedCompany = companyListModel.get(selectedIndex);
+                    dataManager.removeCompany(selectedCompany.getName());
+                    refreshCompanyList();
+                }
+            }
+        });
+
+        updateCompanyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 회사 수정 로직 구현
+                int selectedIndex = companyList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Company selectedCompany = companyListModel.get(selectedIndex);
+                    String companyName = JOptionPane.showInputDialog(frame, "수정할 회사의 이름을 입력하세요:");
+                    if (companyName != null && !companyName.isEmpty()) {
+                        selectedCompany.setName(companyName);
+                        dataManager.updateCompany(selectedCompany);
+                        refreshCompanyList();
+                    }
+                }
+            }
+        });
+
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+
+    // 부서 관리 창 보여주는 메서드
+    private void showDepartmentManagement() {
+        JFrame frame = new JFrame("부서 관리");
+        JPanel panel = new JPanel();
+
+        // DefaultListModel와 JList 생성
+        departmentListModel = new DefaultListModel<>();
+        departmentList = new JList<>(departmentListModel);
+        departmentList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(departmentList);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // JButton 생성
+        JButton addDepartmentButton = new JButton("부서 추가");
+        JButton removeDepartmentButton = new JButton("부서 삭제");
+        JButton updateDepartmentButton = new JButton("부서 수정");
+
+        // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
+        panel.add(addDepartmentButton);
+        panel.add(removeDepartmentButton);
+        panel.add(updateDepartmentButton);
+        panel.add(scrollPane);
+
+        // 부서 목록 초기화
+        refreshDepartmentList();
+
+        addDepartmentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 부서 추가 로직 구현
+                String departmentName = JOptionPane.showInputDialog(frame, "추가할 부서의 이름을 입력하세요:");
+                if (departmentName != null && !departmentName.isEmpty()) {
+                    Department department = new Department();
+                    dataManager.addDepartment(department);
+                    refreshDepartmentList();
+                }
+            }
+        });
+
+        removeDepartmentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 부서 삭제 로직 구현
+                int selectedIndex = departmentList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Department selectedDepartment = departmentListModel.get(selectedIndex);
+                    dataManager.removeDepartment(selectedDepartment.getName());
+                    refreshDepartmentList();
+                }
+            }
+        });
+
+        updateDepartmentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 부서 수정 로직 구현
+                int selectedIndex = departmentList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Department selectedDepartment = departmentListModel.get(selectedIndex);
+                    String departmentName = JOptionPane.showInputDialog(frame, "수정할 부서의 이름을 입력하세요:");
+                    if (departmentName != null && !departmentName.isEmpty()) {
+                        selectedDepartment.setName(departmentName);
+                        dataManager.updateDepartment(selectedDepartment);
+                        refreshDepartmentList();
+                    }
+                }
+            }
+        });
+
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+
+    // 멤버 관리 창 보여주는 메서드
+    private void showMemberManagement() {
+        JFrame frame = new JFrame("멤버 관리");
+        JPanel panel = new JPanel();
+
+        // DefaultListModel와 JList 생성
+        memberListModel = new DefaultListModel<>();
+        memberList = new JList<>(memberListModel);
+        memberList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(memberList);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // JButton 생성
+        JButton addMemberButton = new JButton("멤버 추가");
+        JButton removeMemberButton = new JButton("멤버 삭제");
+        JButton updateMemberButton = new JButton("멤버 수정");
+
+        // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
+        panel.add(addMemberButton);
+        panel.add(removeMemberButton);
+        panel.add(updateMemberButton);
+        panel.add(scrollPane);
+
+        // 멤버 목록 초기화
+        refreshMemberList();
+
+        addMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 멤버 추가 로직 구현
+                String memberName = JOptionPane.showInputDialog(frame, "추가할 멤버의 이름을 입력하세요:");
+                if (memberName != null && !memberName.isEmpty()) {
+                    String groupName = JOptionPane.showInputDialog(frame, "소속될 아이돌 그룹의 이름을 입력하세요:");
+                    String position = JOptionPane.showInputDialog(frame, "멤버의 포지션을 입력하세요:");
+
+                    if (groupName != null && !groupName.isEmpty() && position != null && !position.isEmpty()) {
+                        Member member = new Member();
+                        dataManager.addMember(member);
+                        refreshMemberList();
+                    }
+                }
+            }
+        });
+
+        removeMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 멤버 삭제 로직 구현
+                int selectedIndex = memberList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Member selectedMember = memberListModel.get(selectedIndex);
+                    dataManager.removeMember(selectedMember.getName());
+                    refreshMemberList();
+                }
+            }
+        });
+
+        updateMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 멤버 수정 로직 구현
+                int selectedIndex = memberList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Member selectedMember = memberListModel.get(selectedIndex);
+                    String memberName = JOptionPane.showInputDialog(frame, "수정할 멤버의 이름을 입력하세요:");
+                    if (memberName != null && !memberName.isEmpty()) {
+                        selectedMember.setName(memberName);
+                        dataManager.updateMember(selectedMember);
+                        refreshMemberList();
+                    }
+                }
+            }
+        });
+
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+
+    // 스케줄 관리 창 보여주는 메서드
+    private void showScheduleManagement() {
+        JFrame frame = new JFrame("스케줄 관리");
+        JPanel panel = new JPanel();
+
+        // DefaultListModel와 JList 생성
+        scheduleListModel = new DefaultListModel<>();
+        scheduleList = new JList<>(scheduleListModel);
+        scheduleList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(scheduleList);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        // JButton 생성
+        JButton addScheduleButton = new JButton("스케줄 추가");
+        JButton removeScheduleButton = new JButton("스케줄 삭제");
+        JButton updateScheduleButton = new JButton("스케줄 수정");
+
+        // 버튼 옆에 리스트 뷰를 보여주기 위해 JPanel에 JScrollPane 추가
+        panel.add(addScheduleButton);
+        panel.add(removeScheduleButton);
+        panel.add(updateScheduleButton);
+        panel.add(scrollPane);
+
+        // 스케줄 목록 초기화
+        refreshScheduleList();
+
+        addScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 스케줄 추가 로직 구현
+                String scheduleName = JOptionPane.showInputDialog(frame, "추가할 스케줄의 이름을 입력하세요:");
+                if (scheduleName != null && !scheduleName.isEmpty()) {
+                    String groupName = JOptionPane.showInputDialog(frame, "소속된 아이돌 그룹의 이름을 입력하세요:");
+                    String date = JOptionPane.showInputDialog(frame, "스케줄 날짜를 입력하세요 (yyyy-MM-dd):");
+
+                    if (groupName != null && !groupName.isEmpty() && date != null && !date.isEmpty()) {
+                        try {
+                            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            Date scheduleDate = dateFormat.parse(date);
+
+                            Schedule schedule = new Schedule();
+                            dataManager.addSchedule(schedule);
+                            refreshScheduleList();
+                        } catch (ParseException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+
+        removeScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 스케줄 삭제 로직 구현
+                int selectedIndex = scheduleList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Date selectedDate = scheduleListModel.get(selectedIndex).getDate();
+                    dataManager.removeSchedule(selectedDate);
+                    refreshScheduleList();
+                }
+            }
+        });
+        
+        updateScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 스케줄 수정 로직 구현
+                int selectedIndex = scheduleList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    Schedule selectedSchedule = scheduleListModel.get(selectedIndex);
+                    String scheduleName = JOptionPane.showInputDialog(frame, "수정할 스케줄의 이름을 입력하세요:");
+                    if (scheduleName != null && !scheduleName.isEmpty()) {
+                        selectedSchedule.setContent(scheduleName);
+                        dataManager.updateSchedule(selectedSchedule);
+                        refreshScheduleList();
+                    }
+                }
+            }
+        });
+        
+
+        // JFrame에 JPanel 추가
+        frame.add(panel);
+
+        // JFrame 설정
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+    }
+
+    // 앨범 목록을 갱신하는 메서드
+    private void refreshAlbumList() {
+        albumListModel.clear();
+        List<Album> albums = dataManager.getAlbums();
+        for (Album album : albums) {
+            albumListModel.addElement(album);
+        }
+    }
+
+    // 회사 목록을 갱신하는 메서드
+    private void refreshCompanyList() {
+        companyListModel.clear();
+        List<Company> companies = dataManager.getCompanies();
+        for (Company company : companies) {
+            companyListModel.addElement(company);
+        }
+    }
+
+    // 부서 목록을 갱신하는 메서드
+    private void refreshDepartmentList() {
+        departmentListModel.clear();
+        List<Department> departments = dataManager.getDepartments();
+        for (Department department : departments) {
+            departmentListModel.addElement(department);
+        }
+    }
+
+    // 멤버 목록을 갱신하는 메서드
+    private void refreshMemberList() {
+        memberListModel.clear();
+        List<Member> members = dataManager.getMembers();
+        for (Member member : members) {
+            memberListModel.addElement(member);
+        }
+    }
+
+    // 스케줄 목록을 갱신하는 메서드
+    private void refreshScheduleList() {
+        scheduleListModel.clear();
+        List<Schedule> schedules = dataManager.getSchedules();
+        for (Schedule schedule : schedules) {
+            scheduleListModel.addElement(schedule);
+        }
+    }
+    // 아이돌 그룹 목록을 갱신하는 메소드
     private void refreshIdolGroupList() {
-        idolGroupListModel.clear();
+        idolGroupListModel.clear(); // 기존 목록을 비웁니다.
         for (IdolGroup group : dataManager.getIdolGroups()) {
-            idolGroupListModel.addElement(group);
-        }
+            idolGroupListModel.addElement(group); // 새로운 아이돌 그룹을 목록에 추가합니다.
     }
-
-    // 상세 정보를 보여주는 메서드
-    private void showDetailedInformation(IdolGroup group) {
-        if (detailFrame == null) {
-            detailFrame = new JFrame("상세 정보");
-            detailFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-
-            JPanel detailPanel = new JPanel(new GridBagLayout());
-            GridBagConstraints constraints = new GridBagConstraints();
-            constraints.gridx = 0;
-            constraints.gridy = 0;
-            constraints.anchor = GridBagConstraints.WEST;
-
-            JLabel nameLabel = new JLabel("그룹 이름:");
-            detailPanel.add(nameLabel, constraints);
-
-            groupNameLabel = new JLabel();
-            constraints.gridx = 1;
-            constraints.gridy = 0;
-            constraints.weightx = 1.0;
-            detailPanel.add(groupNameLabel, constraints);
-
-            JLabel debutLabel = new JLabel("데뷔 날짜:");
-            constraints.gridx = 0;
-            constraints.gridy = 1;
-            constraints.weightx = 0.0;
-            detailPanel.add(debutLabel, constraints);
-
-            debutDateLabel = new JLabel();
-            constraints.gridx = 1;
-            constraints.gridy = 1;
-            constraints.weightx = 1.0;
-            detailPanel.add(debutDateLabel, constraints);
-
-            JLabel agencyLabel = new JLabel("소속사:");
-            constraints.gridx = 0;
-            constraints.gridy = 2;
-            constraints.weightx = 0.0;
-            detailPanel.add(agencyLabel, constraints);
-
-            this.agencyLabel = new JLabel();
-            constraints.gridx = 1;
-            constraints.gridy = 2;
-            constraints.weightx = 1.0;
-            detailPanel.add(this.agencyLabel, constraints);
-
-            detailFrame.add(detailPanel);
-            detailFrame.setSize(300, 200);
-        }
-
-        groupNameLabel.setText(group.getGroupName());
-        debutDateLabel.setText(group.getDebutDate().toString());
-        agencyLabel.setText(group.getAgency());
-
-        detailFrame.setVisible(true);
-    }
-
-    // 상세 정보를 초기화하는 메서드
-    private void clearDetailedInformation() {
-        groupNameLabel.setText("");
-        debutDateLabel.setText("");
-        agencyLabel.setText("");
-    }
+}
 }

@@ -113,6 +113,10 @@ class Company {
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
     }
+    @Override
+    public String toString() {
+        return getName(); 
+    }
 }
 
 class Schedule {
@@ -151,6 +155,9 @@ class Schedule {
     public void addParticipant(String participant) {
         participants.add(participant);
     }
+    public String toString() {
+        return getContent(); 
+    }
 }
 
 
@@ -180,6 +187,9 @@ class Department {
 
     public void addTask(String task) {
         taskList.add(task);
+    }
+    public String toString() {
+        return getName(); 
     }
 }
 
@@ -218,6 +228,9 @@ class Album {
 
     public void addTrack(String track) {
         trackList.add(track);
+    }
+    public String toString() {
+        return getTitle(); 
     }
 }
 

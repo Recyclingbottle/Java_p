@@ -29,6 +29,10 @@ abstract class Person {
     public void setContact(String contact) {
         this.contact = contact;
     }
+    @Override
+    public String toString() {
+        return getName(); 
+    }
 }
 
 class Member extends Person {
