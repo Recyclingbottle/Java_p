@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Removed Member: " + memberNameToRemove);
 
         // 아이돌 그룹 업데이트 테스트
-        String groupNameToUpdate = "Group 81";
+        String groupNameToUpdate = "Group 101";
         IdolGroup updatedGroup = new IdolGroup();
         updatedGroup.setGroupName(groupNameToUpdate);
         updatedGroup.setDebutDate(new Date());
@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Updated IdolGroup: " + groupNameToUpdate);
 
         // 멤버 검색 테스트
-        String memberNameToSearch = "Member 1";
+        String memberNameToSearch = "Member 505";
         Member searchedMember = dataManager.getMember(memberNameToSearch);
         if (searchedMember != null) {
             System.out.println("Found Member: " + searchedMember.getName());
