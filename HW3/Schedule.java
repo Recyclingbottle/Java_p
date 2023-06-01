@@ -57,36 +57,34 @@ class Department {
     private String name;
     private LinkedList<String> taskList;
 
+    public Department() {
+        taskList = new LinkedList<>();
+    }
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
-
+    
     public LinkedList<String> getTaskList() {
         return taskList;
     }
-
+    
     public void setTaskList(LinkedList<String> taskList) {
         this.taskList = taskList;
     }
-
+    
     public void addTask(String task) {
         taskList.add(task);
     }
-
-    public void removeTask(String task) {
-        taskList.remove(task);
+    
+    public String toString() {
+        return getName();
     }
-
-    public void updateTask(String oldTask, String newTask) {
-        int index = taskList.indexOf(oldTask);
-        if (index != -1) {
-            taskList.set(index, newTask);
-        }
-    }
+    
 }
 
 class Album {

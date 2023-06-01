@@ -538,13 +538,14 @@ public class Main {
                 String departmentRole = JOptionPane.showInputDialog(frame, "추가할 부서의 역할을 입력하세요:");
                 if (departmentName != null && !departmentName.isEmpty() && departmentRole != null && !departmentRole.isEmpty()) {
                     Department department = new Department();
-                    department.setName(departmentName); 
-                    department.setRole(departmentRole); 
+                    department.setName(departmentName);
+                    department.addTask(departmentRole);
                     dataManager.addDepartment(department);
                     refreshDepartmentList();
                 }
             }
         });
+        
     
         removeDepartmentButton.addActionListener(new ActionListener() {
             @Override
@@ -779,10 +780,11 @@ public class Main {
 
     // 부서 목록을 갱신하는 메서드
     private void refreshDepartmentList() {
-        departmentListModel.clear();
+        departmentListModel.clear(); // 기존 목록 초기화
+        
         List<Department> departments = dataManager.getDepartments();
         for (Department department : departments) {
-            departmentListModel.addElement(department);
+            departmentListModel.addElement(department); // 목록에 부서 추가
         }
     }
 
