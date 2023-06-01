@@ -33,6 +33,7 @@ public class DataManager {
         loadCompanies();
         loadAlbums();
     }
+    
     private void loadIdolGroups() {
         try (BufferedReader reader = new BufferedReader(new FileReader(GROUPS_FILE))) {
             String line;
@@ -53,14 +54,13 @@ public class DataManager {
         }
     }
     
-    
     public ArrayList<IdolGroup> getIdolGroups() {
         return idolGroups;
     }
+    
     private void loadMembers() {
         try (BufferedReader reader = new BufferedReader(new FileReader(MEMBERS_FILE))) {
-            // 첫 번째 줄인 헤더를 무시하기 위해 한 줄을 읽어서 건너뜁니다.
-            reader.readLine();
+            reader.readLine(); // 첫 번째 줄인 헤더를 무시하기 위해 한 줄을 읽어서 건너뜁니다.
             
             String line;
             while ((line = reader.readLine()) != null) {
@@ -85,11 +85,9 @@ public class DataManager {
         }
     }
     
-
     private void loadSchedules() {
         try (BufferedReader reader = new BufferedReader(new FileReader(SCHEDULES_FILE))) {
-            // 첫 번째 줄을 건너뜁니다.
-            reader.readLine();
+            reader.readLine(); // 첫 번째 줄을 건너뜁니다.
             
             String line;
             while ((line = reader.readLine()) != null) {
@@ -98,7 +96,8 @@ public class DataManager {
                 schedule.setDate(parseDate(values[0]));
                 schedule.setContent(values[1]);
                 for (int i = 2; i < values.length; i++) {
-                    schedule.addParticipant(values[i]);
+                    Member participant = new Member(values[i]);
+                    schedule.addParticipant(participant);
                 }
                 schedules.add(schedule);
             }
@@ -107,11 +106,9 @@ public class DataManager {
         }
     }
     
-
     private void loadDepartments() {
         try (BufferedReader reader = new BufferedReader(new FileReader(DEPARTMENTS_FILE))) {
-            // 첫 번째 줄을 건너뜁니다.
-            reader.readLine();
+            reader.readLine(); // 첫 번째 줄을 건너뜁니다.
             
             String line;
             while ((line = reader.readLine()) != null) {
@@ -128,11 +125,9 @@ public class DataManager {
         }
     }
     
-
     private void loadCompanies() {
         try (BufferedReader reader = new BufferedReader(new FileReader(COMPANIES_FILE))) {
-            // 첫 번째 줄을 건너뜁니다.
-            reader.readLine();
+            reader.readLine(); // 첫 번째 줄을 건너뜁니다.
             
             String line;
             while ((line = reader.readLine()) != null) {
@@ -156,8 +151,12 @@ public class DataManager {
                 Album album = new Album();
                 album.setTitle(values[0]);
                 album.setReleaseDate(parseDate(values[1]));
-                for (int i = 2; i < values.length; i++) {
-                    album.addTrack(values[i]);
+                for (int i = 2; i < values.length; i += 2) {
+                    if (i + 1 < values.length) {
+                        album.addTrack(values[i], values[i + 1]);
+                    } else {
+                        break;
+                    }
                 }
                 albums.add(album);
             }
@@ -165,7 +164,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     private Date parseDate(String dateString) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -181,15 +180,11 @@ public class DataManager {
         }
     }
     
-    
-    
-    
-
     private String formatDate(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.format(date);
     }
-
+    
     public IdolGroup getIdolGroup(String name) {
         for (IdolGroup group : idolGroups) {
             if (group.getGroupName().equals(name)) {
@@ -198,12 +193,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addIdolGroup(IdolGroup group) {
         idolGroups.add(group);
         saveIdolGroups();
     }
-
+    
     public void removeIdolGroup(String name) {
         IdolGroup group = getIdolGroup(name);
         if (group != null) {
@@ -211,7 +206,7 @@ public class DataManager {
             saveIdolGroups();
         }
     }
-
+    
     public void updateIdolGroup(IdolGroup group) {
         IdolGroup existingGroup = getIdolGroup(group.getGroupName());
         if (existingGroup != null) {
@@ -221,7 +216,7 @@ public class DataManager {
             saveIdolGroups();
         }
     }
-
+    
     private void saveIdolGroups() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(GROUPS_FILE))) {
             for (IdolGroup group : idolGroups) {
@@ -234,7 +229,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     public Member getMember(String name) {
         for (Member member : members) {
             if (member.getName().equals(name)) {
@@ -243,12 +238,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addMember(Member member) {
         members.add(member);
         saveMembers();
     }
-
+    
     public void removeMember(String name) {
         Member member = getMember(name);
         if (member != null) {
@@ -256,7 +251,7 @@ public class DataManager {
             saveMembers();
         }
     }
-
+    
     public void updateMember(Member member) {
         Member existingMember = getMember(member.getName());
         if (existingMember != null) {
@@ -265,7 +260,7 @@ public class DataManager {
             saveMembers();
         }
     }
-
+    
     private void saveMembers() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MEMBERS_FILE))) {
             for (Member member : members) {
@@ -278,7 +273,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     public Schedule getSchedule(Date date) {
         for (Schedule schedule : schedules) {
             if (schedule.getDate().equals(date)) {
@@ -287,12 +282,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addSchedule(Schedule schedule) {
         schedules.add(schedule);
         saveSchedules();
     }
-
+    
     public void removeSchedule(Date date) {
         Schedule schedule = getSchedule(date);
         if (schedule != null) {
@@ -300,7 +295,7 @@ public class DataManager {
             saveSchedules();
         }
     }
-
+    
     public void updateSchedule(Schedule schedule) {
         Schedule existingSchedule = getSchedule(schedule.getDate());
         if (existingSchedule != null) {
@@ -309,13 +304,13 @@ public class DataManager {
             saveSchedules();
         }
     }
-
+    
     private void saveSchedules() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(SCHEDULES_FILE))) {
             for (Schedule schedule : schedules) {
                 String line = formatDate(schedule.getDate()) + CSV_SEPARATOR + schedule.getContent();
-                for (String participant : schedule.getParticipants()) {
-                    line += CSV_SEPARATOR + participant;
+                for (Member participant : schedule.getParticipants()) {
+                    line += CSV_SEPARATOR + participant.getName();
                 }
                 writer.write(line);
                 writer.newLine();
@@ -324,7 +319,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     public Department getDepartment(String name) {
         for (Department department : departments) {
             if (department.getName().equals(name)) {
@@ -333,12 +328,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addDepartment(Department department) {
         departments.add(department);
         saveDepartments();
     }
-
+    
     public void removeDepartment(String name) {
         Department department = getDepartment(name);
         if (department != null) {
@@ -346,7 +341,7 @@ public class DataManager {
             saveDepartments();
         }
     }
-
+    
     public void updateDepartment(Department department) {
         Department existingDepartment = getDepartment(department.getName());
         if (existingDepartment != null) {
@@ -354,7 +349,7 @@ public class DataManager {
             saveDepartments();
         }
     }
-
+    
     private void saveDepartments() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(DEPARTMENTS_FILE))) {
             for (Department department : departments) {
@@ -369,7 +364,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     public Company getCompany(String name) {
         for (Company company : companies) {
             if (company.getName().equals(name)) {
@@ -378,12 +373,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addCompany(Company company) {
         companies.add(company);
         saveCompanies();
     }
-
+    
     public void removeCompany(String name) {
         Company company = getCompany(name);
         if (company != null) {
@@ -391,7 +386,7 @@ public class DataManager {
             saveCompanies();
         }
     }
-
+    
     public void updateCompany(Company company) {
         Company existingCompany = getCompany(company.getName());
         if (existingCompany != null) {
@@ -400,7 +395,7 @@ public class DataManager {
             saveCompanies();
         }
     }
-
+    
     private void saveCompanies() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(COMPANIES_FILE))) {
             for (Company company : companies) {
@@ -413,7 +408,7 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-
+    
     public Album getAlbum(String title) {
         for (Album album : albums) {
             if (album.getTitle().equals(title)) {
@@ -422,12 +417,12 @@ public class DataManager {
         }
         return null;
     }
-
+    
     public void addAlbum(Album album) {
         albums.add(album);
         saveAlbums();
     }
-
+    
     public void removeAlbum(String title) {
         Album album = getAlbum(title);
         if (album != null) {
@@ -435,7 +430,7 @@ public class DataManager {
             saveAlbums();
         }
     }
-
+    
     public void updateAlbum(Album album) {
         Album existingAlbum = getAlbum(album.getTitle());
         if (existingAlbum != null) {
@@ -444,13 +439,13 @@ public class DataManager {
             saveAlbums();
         }
     }
-
+    
     private void saveAlbums() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ALBUMS_FILE))) {
             for (Album album : albums) {
                 String line = album.getTitle() + CSV_SEPARATOR + formatDate(album.getReleaseDate());
-                for (String track : album.getTrackList()) {
-                    line += CSV_SEPARATOR + track;
+                for (Map.Entry<String, String> track : album.getTrackList().entrySet()) {
+                    line += CSV_SEPARATOR + track.getKey() + ":" + track.getValue();
                 }
                 writer.write(line);
                 writer.newLine();
@@ -459,22 +454,23 @@ public class DataManager {
             e.printStackTrace();
         }
     }
-     public List<Album> getAlbums() {
+    
+    public List<Album> getAlbums() {
         return albums;
     }
-
+    
     public List<Company> getCompanies() {
         return companies;
     }
-
+    
     public List<Department> getDepartments() {
         return departments;
     }
-
+    
     public List<Member> getMembers() {
         return members;
     }
-
+    
     public List<Schedule> getSchedules() {
         return schedules;
     }

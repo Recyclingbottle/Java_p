@@ -1,5 +1,8 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Group {
     private String groupName;
@@ -83,6 +86,10 @@ class IdolGroup extends Group {
     public String toString() {
         return getGroupName(); // 그룹 이름을 반환하도록 toString() 메서드 오버라이딩
     }
+    public String getDebutDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(debutDate);
+    }
 }
 
 class Company {
@@ -122,7 +129,7 @@ class Company {
 class Schedule {
     private Date date;
     private String content;
-    private ArrayList<String> participants;
+    private ArrayList<Member> participants;
 
     public Schedule() {
         participants = new ArrayList<>();
@@ -144,25 +151,38 @@ class Schedule {
         this.content = content;
     }
 
-    public ArrayList<String> getParticipants() {
+    public ArrayList<Member> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<String> participants) {
+    public void setParticipants(ArrayList<Member> participants) {
         this.participants = participants;
     }
 
-    public void addParticipant(String participant) {
+    public void addParticipant(Member participant) {
         participants.add(participant);
     }
+
+    public void removeParticipant(Member participant) {
+        participants.remove(participant);
+    }
+
+    public void updateParticipant(Member participant) {
+        int index = participants.indexOf(participant);
+        if (index != -1) {
+            participants.set(index, participant);
+        }
+    }
+
     public String toString() {
-        return getContent(); 
+        return getContent();
     }
 }
 
 
 class Department {
     private String name;
+    private String role;
     private ArrayList<String> taskList;
 
     public Department() {
@@ -176,6 +196,14 @@ class Department {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public ArrayList<String> getTaskList() {
         return taskList;
@@ -188,18 +216,20 @@ class Department {
     public void addTask(String task) {
         taskList.add(task);
     }
+
+    @Override
     public String toString() {
-        return getName(); 
+        return getName();
     }
 }
 
 class Album {
     private String title;
     private Date releaseDate;
-    private ArrayList<String> trackList;
+    private HashMap<String, String> trackList;
 
     public Album() {
-        trackList = new ArrayList<>();
+        trackList = new HashMap<>();
     }
 
     public String getTitle() {
@@ -218,19 +248,32 @@ class Album {
         this.releaseDate = releaseDate;
     }
 
-    public ArrayList<String> getTrackList() {
+    public String getTrack(String title) {
+        return trackList.get(title);
+    }
+
+    public HashMap<String, String> getTrackList() {
         return trackList;
     }
 
-    public void setTrackList(ArrayList<String> trackList) {
+    public void setTrackList(HashMap<String, String> trackList) {
         this.trackList = trackList;
     }
 
-    public void addTrack(String track) {
-        trackList.add(track);
+    public void addTrack(String title, String length) {
+        trackList.put(title, length);
     }
+
+    public void removeTrack(String title) {
+        trackList.remove(title);
+    }
+
+    public void updateTrack(String title, String length) {
+        trackList.put(title, length);
+    }
+    
+    @Override
     public String toString() {
-        return getTitle(); 
+        return getTitle();
     }
 }
-

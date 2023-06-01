@@ -42,6 +42,11 @@ class Member extends Person {
     public Member() {
         scheduleList = new LinkedList<>();
     }
+    
+    public Member(String participantName) {
+        this.setName(participantName);
+        scheduleList = new LinkedList<>();
+    }
 
     public String getPosition() {
         return position;
