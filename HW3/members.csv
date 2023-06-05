@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 name,birth_date,contact
 Irene,1991-03-29,irene@redvelvet.com
 Seulgi,1994-02-10,seulgi@redvelvet.com
+=======
+>>>>>>> 38453a348f0271f722b5cb4327e75cbfb230e431
 Wendy,1994-02-21,wendy@redvelvet.com
 Joy,1996-09-03,joy@redvelvet.com
 Yeri,1999-03-05,yeri@redvelvet.com
 RM,1994-09-12,rm@bts.com
 Jin,1992-12-04,jin@bts.com
+<<<<<<< HEAD
 Suga,1993-03-09,suga@bts.com
 J-Hope,1994-02-18,jhope@bts.com
+=======
+test,1994-02-18,jhope@bts.com
+>>>>>>> 38453a348f0271f722b5cb4327e75cbfb230e431
 Jimin,1995-10-13,jimin@bts.com
 V,1995-12-30,v@bts.com
 Jungkook,1997-09-01,jungkook@bts.com

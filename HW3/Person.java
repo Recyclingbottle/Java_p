@@ -29,6 +29,10 @@ abstract class Person {
     public void setContact(String contact) {
         this.contact = contact;
     }
+    @Override
+    public String toString() {
+        return getName(); 
+    }
 }
 
 class Member extends Person {
@@ -36,6 +40,11 @@ class Member extends Person {
     private LinkedList<Schedule> scheduleList;
 
     public Member() {
+        scheduleList = new LinkedList<>();
+    }
+    
+    public Member(String participantName) {
+        this.setName(participantName);
         scheduleList = new LinkedList<>();
     }
 
