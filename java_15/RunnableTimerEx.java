@@ -1,11 +1,11 @@
-package java_14;
+package java_15;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class ThreadTimerEx extends JFrame {
-    public ThreadTimerEx() {
-        setTitle("ThreadTimerEx 예제");
+public class RunnableTimerEx extends JFrame {
+    public RunnableTimerEx() {
+        setTitle("RunnableTimerEx 예제");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
 
@@ -16,19 +16,20 @@ public class ThreadTimerEx extends JFrame {
         setSize(300, 150);
         setVisible(true);
 
-        TimerThread th = new TimerThread(timerLabel);
+        TimerRunnable runnable = new TimerRunnable(timerLabel);
+        Thread th = new Thread(runnable);
         th.start();
     }
- 
     public static void main(String[] args) {
-        new ThreadTimerEx();
+        new RunnableTimerEx();
     }
+    
 }
 
-class TimerThread extends Thread {
+class TimerRunnable implements Runnable {
     JLabel timerLabel;
-
-    public TimerThread(JLabel timerLabel) {
+    
+    public TimerRunnable(JLabel timerLabel) {
         this.timerLabel = timerLabel;
     }
 
@@ -38,7 +39,7 @@ class TimerThread extends Thread {
             timerLabel.setText(Integer.toString(n));
             n++;
             try {
-                sleep(1000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 return;
             }
